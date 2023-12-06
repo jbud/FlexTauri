@@ -33,9 +33,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: directory
-        run: cd ./flex
       - name: build
+        working-directory: ./flex
         run: npm run build
       - name: artifact into position
         run: cp -R ./build/* ../src/*
