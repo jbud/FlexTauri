@@ -21,11 +21,7 @@ jobs:
       - name: Checkout submodules
         run: git submodule update --init --recursive
       - name: Prepare Directories
-        run: mkdir ./work/
-      - name: Prepare Directories
         run: mkdir ./src/
-      - name: copy modules
-        run: cp -R ./flex ./work
       - name: Copy the submodule
         run: cp -R ./flex/runways/icao/ ./flex/public/database/runways/
       
@@ -35,9 +31,11 @@ jobs:
           node-version: 20
       - name: build
         working-directory: ./flex
-        run: npm run build
+        run: |
+          npm install
+          npm run build
       - name: artifact into position
-        run: cp -R ./build/* ../src/*
+        run: cp -R ./flex/build/* ./src/*
       
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
