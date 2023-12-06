@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-20.04, windows-latest]
+        platform: [windows-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -21,9 +21,9 @@ jobs:
       - name: Checkout submodules
         run: git submodule update --init --recursive
       - name: Prepare Directories
-        run: mkdir -p -v ./work/
+        run: mkdir ./work/
       - name: Prepare Directories
-        run: mkdir -p -v ./src/
+        run: mkdir ./src/
       - name: copy modules
         run: cp -R ./flex ./work
       - name: Copy the submodule
