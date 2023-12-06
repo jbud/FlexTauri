@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Checkout submodules
-        run: git submodule update --init
+        run: git submodule update --init --recursive
       - name: Prepare Directories
         run: mkdir -p -v ./work/
       - name: Prepare Directories
