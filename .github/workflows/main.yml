@@ -30,12 +30,14 @@ jobs:
         with:
           node-version: 20
       - name: build
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         working-directory: ./flex
         run: |
           npm install
           npm run build
       - name: artifact into position
-        run: cp -R ./flex/build/* ./src/*
+        run: cp -R ./flex/build/* ./src/
       
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
